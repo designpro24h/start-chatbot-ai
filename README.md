@@ -181,3 +181,21 @@ Hệ thống của bạn giờ đã:
 ✅ Nhận audio trả về
 ✅ Phát loa I2S
 ✅ TFT hiển thị trạng thái
+
+Mình sẽ làm đúng kiểu embedded chuẩn, ít tốn RAM, dễ mở rộng.
+
+🎯 MỤC TIÊU BƯỚC 4
+
+LCD hiển thị rõ:
+
+🟢 IDLE – chờ
+
+🎤 LISTENING – đang nghe mic
+
+🔊 SPEAKING – Xiaozhi đang trả lời
+
+❌ ERROR / DISCONNECTED
+
+UI đổi ngay khi state thay đổi
+
+Không vẽ lại LCD liên tục (tránh flicker + reset)
