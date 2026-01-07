@@ -1,8 +1,8 @@
 #pragma once
 
 /* ===== WIFI ===== */
-#define WIFI_SSID   "YOUR_WIFI"
-#define WIFI_PASS   "YOUR_PASS"
+#define WIFI_SSID   "PixelCS"
+#define WIFI_PASS   "PixelCS@Nhan"
 
 /* ===== XIAOZHI ===== */
 #define XIAOZHI_HOST "api.xiaozhi.ai"
@@ -15,9 +15,12 @@
 #define PIN_VOL_UP 40
 #define PIN_VOL_DN 39
 
-/* ===== OLED ===== */
-#define OLED_SDA 41
-#define OLED_SCL 42
+/* ===== TFT ST7735 ===== */
+#define TFT_SCK   42
+#define TFT_MOSI  41
+#define TFT_CS    10
+#define TFT_DC    9
+#define TFT_RST   8
 
 /* ===== MIC INMP441 ===== */
 #define MIC_SD   6

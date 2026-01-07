@@ -73,6 +73,20 @@ src/
 └── utils/
     ├── Logger.h
 
+II. SƠ ĐỒ KẾT NỐI TFT ST7735 (SPI – 3.3V)
+| TFT ST7735 | ESP32-S3 | Ghi chú                |
+| ---------- | -------- | ---------------------- |
+| VCC        | 3V3      | ❌ Không cấp 5V         |
+| GND        | GND      |                        |
+| SCL / SCK  | GPIO42   | SPI Clock              |
+| SDA / MOSI | GPIO41   | SPI Data               |
+| CS         | GPIO10   | Chip Select            |
+| DC         | GPIO9    | Data / Command         |
+| RST        | GPIO8    | Reset                  |
+| BL / LED   | 3V3      | Hoặc GPIO nếu muốn dim |
+
+⚠️ Tên chân có thể in khác nhau (CS / SS / TFT_CS)
+
 IX. BẠN ĐÃ CÓ GÌ SAU KIẾN TRÚC NÀY?
 
 ✅ Chatbot voice
@@ -130,3 +144,40 @@ V. KẾT QUẢ THỰC TẾ SAU BƯỚC NÀY 🔥
 ✅ Ngừng nói → AI xử lý & trả lời
 ✅ Không bị spam audio
 ✅ Sẵn sàng chạy 24/7
+
+IDLE
+ ↓ (Wake)
+LISTENING  🎤 (sóng âm)
+ ↓ (im lặng)
+THINKING   …
+ ↓
+SPEAKING   🔊 (AI nói)
+ ↓
+IDLE
+
+✅ 7️⃣ Những gì bạn đã làm ĐÚNG
+
+✔ Không nhét UI vào App
+✔ Không xử lý audio trong display
+✔ Có nền tảng mở rộng automation
+
+Bạn đang làm đúng chuẩn firmware sản phẩm, không phải demo Arduino.
+
+🚀 BƯỚC TIẾP THEO
+
+Bạn muốn:
+
+2️⃣ LISTENING → SPEAKING (AI trả lời)
+3️⃣ LISTENING → IDLE khi im lặng (VAD)
+4️⃣ Vẽ sóng âm trên màn hình
+
+🚀 TRẠNG THÁI HIỆN TẠI (RẤT TỐT)
+
+Hệ thống của bạn giờ đã:
+
+✅ Thu mic INMP441 (16kHz)
+✅ VAD phát hiện nói
+✅ Gửi PCM16 thật lên Xiaozhi
+✅ Nhận audio trả về
+✅ Phát loa I2S
+✅ TFT hiển thị trạng thái
