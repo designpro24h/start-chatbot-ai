@@ -72,3 +72,61 @@ src/
 │
 └── utils/
     ├── Logger.h
+
+IX. BẠN ĐÃ CÓ GÌ SAU KIẾN TRÚC NÀY?
+
+✅ Chatbot voice
+✅ Wake button
+✅ TTS
+✅ Nhạc / radio / podcast (chỉ cần thêm AudioStream class)
+✅ Automation (kế thừa CommandHandler)
+✅ OLED hiển thị trạng thái
+✅ Có thể port sang ESP-IDF dễ dàng
+
+🎯 MỤC TIÊU BƯỚC NÀY
+
+✅ ESP32 chỉ gửi audio khi có giọng nói
+✅ Im lặng → không gửi gì cả
+✅ Nhấn Wake → bật chế độ nghe
+✅ Nói xong → tự dừng
+✅ Chuẩn bị nền tảng cho:
+
+Chatbot
+
+Nhạc
+
+Radio
+
+Automation bằng giọng nói
+
+I. KIẾN TRÚC MỞ RỘNG (KHÔNG PHÁ CŨ)
+
+Thêm 1 module mới:
+
+audio/
+├── AudioDevice.h
+├── MicINMP441.h / .cpp
+├── SpeakerI2S.h / .cpp
+├── VAD.h        ✅
+├── VAD.cpp      ✅
+
+II. NGUYÊN LÝ VAD (DỄ HIỂU)
+
+Ta không dùng AI nặng, chỉ dùng RMS / Energy:
+
+Tính độ lớn âm thanh
+
+Nếu > ngưỡng → đang nói
+
+Nếu < ngưỡng liên tục → im lặng
+
+👉 Phù hợp ESP32-S3, chạy rất nhẹ.
+
+V. KẾT QUẢ THỰC TẾ SAU BƯỚC NÀY 🔥
+
+✅ Nhấn Wake
+✅ Nói chuyện
+✅ ESP32 chỉ gửi đúng đoạn có tiếng nói
+✅ Ngừng nói → AI xử lý & trả lời
+✅ Không bị spam audio
+✅ Sẵn sàng chạy 24/7
