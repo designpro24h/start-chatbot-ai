@@ -5,5 +5,9 @@
 class DisplayManager {
 public:
   static void init();
-  static void showText(const char* txt);
+  
+
+  static void showText(const String& txt);
+
+  static void drawWaveColumn(int col, int height);
 };
